@@ -1,0 +1,227 @@
+---
+
+---
+title: "Global Tuberculosis Analysis"
+subtitle: "A Global, Regional and Country-Level Assessment"
+author: MA_inDataWorld
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    code-fold: true
+    code-tools: true
+    embed-resources: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+# 1. Introduction
+
+Tuberculosis (TB) remains one of the major global public health challenges, contributing to substantial morbidity and mortality worldwide.
+
+Despite significant progress in TB prevention, diagnosis and treatment, the burden of the disease continues to vary considerably across countries and geographical regions.
+
+This project provides a data-driven assessment of global tuberculosis incidence and mortality trends using estimates published by the World Health Organization (WHO).
+
+The analysis examines global patterns, compares tuberculosis burden across WHO regions, identifies countries with the highest estimated incidence and mortality rates, and investigates Egypt's position within the Eastern Mediterranean Region (EMR).
+
+Particular attention is given to changes in TB incidence and mortality over time and to comparing Egypt's epidemiological trends with those observed across the rest of the Eastern Mediterranean Region.
+
+## 1.1 Project Objectives
+
+The main objectives of this analysis are:
+
+- Examine global trends in tuberculosis incidence and mortality.
+
+- Compare TB incidence and mortality rates across WHO geographical regions.
+
+- Identify countries with the highest estimated tuberculosis incidence and mortality rates.
+
+- Determine Egypt's global ranking in terms of TB incidence and mortality.
+
+- Examine tuberculosis burden across Eastern Mediterranean countries.
+
+- Assess Egypt's regional ranking in TB incidence and mortality.
+
+- Compare historical TB trends in Egypt with population-weighted estimates for the rest of the Eastern Mediterranean Region.
+
+# 2. Data and Methodology
+
+## 2.1 Data Sources
+
+This analysis uses data obtained from the World Health Organization (WHO) Global Tuberculosis Programme.
+
+Two source files were used:
+
+1.  **TB Burden Dataset:** Contains country-level estimates of tuberculosis incidence, mortality, population and related epidemiological indicators.
+
+2.  **WHO TB Data Dictionary:** Provides definitions and reference information for the variables included in the original dataset.
+
+The datasets are stored in the `data/raw/` directory of this project.
+
+## 2.2 Data Preparation
+
+The original WHO tuberculosis dataset was imported into R using the `readr` package.
+
+Variable names were renamed to improve readability and consistency throughout the analysis.
+
+The dataset was subsequently restricted to the variables required for the analysis, including country identifiers, WHO regional codes, reporting years, population estimates, TB incidence rates and TB mortality rates.
+
+The WHO data dictionary was used to extract regional codes and their corresponding geographical names.
+
+These regional names were then joined to the main dataset to facilitate regional comparisons.
+
+## 2.3 Analytical Methodology
+
+Population-weighted averages were calculated to estimate global and regional tuberculosis incidence and mortality rates over time.
+
+Latest available country-level and regional estimates were extracted to facilitate comparisons of the most recent reported disease burden.
+
+Countries were ranked according to their estimated TB incidence and mortality rates.
+
+Percentage changes in regional incidence and mortality rates were calculated to assess changes between the first and last available years.
+
+Finally, Egypt's TB burden was examined separately and compared with population-weighted estimates for the Eastern Mediterranean Region excluding Egypt.
+
+# 3. Global Analysis
+
+The global analysis examines changes in tuberculosis incidence and mortality rates over time.
+
+Population-weighted estimates are used to provide an overview of the global TB burden between 2000 and 2024.
+
+```{r}
+#| include: false
+
+source("tuberculosis_analysis.R")
+```
+
+## 3.1 Global Trends in TB Incidence and Mortality
+
+The following figure illustrates changes in global tuberculosis incidence and mortality rates between 2000 and 2024.
+
+![Global trends in TB incidence and mortality](figures/global_tb_trends.png)
+
+The figure presents population-weighted estimates of global TB incidence and mortality rates, providing an overview of the changing global disease burden.
+
+# 4. Regional Analysis
+
+This section investigates differences in tuberculosis incidence and mortality across the six WHO geographical regions.
+
+The analysis examines both the latest available regional estimates and historical changes in tuberculosis burden over time.
+
+## 4.1 Comparison of TB Incidence and Mortality Across WHO Regions
+
+The following figure compares the latest available TB incidence and mortality estimates across WHO regions.
+
+![TB incidence and mortality across WHO regions](figures/regional_tb_comparison.png)
+
+## 4.2 Regional TB Mortality Trends
+
+This figure illustrates changes in population-weighted TB mortality rates across WHO regions between 2000 and 2024.
+
+![Regional TB mortality trends](figures/regional_tb_mortality_trends.png)
+
+## 4.3 Regional TB Incidence Trends
+
+The following figure presents historical changes in TB incidence rates across WHO regions.
+
+![Regional TB incidence trends](figures/regional_tb_incidence_trends.png)
+
+## 4.4 Percentage Change in Regional TB Incidence Rates
+
+This comparison examines the percentage change in TB incidence rates between the first and last available years for each WHO region.
+
+![Percentage change in regional TB incidence rates](figures/regional_tb_incidence_percentage_change.png)
+
+## 4.5 Percentage Change in Regional TB Mortality Rates
+
+The following figure compares percentage changes in TB mortality rates across WHO regions over the study period.
+
+![Percentage change in regional TB mortality rates](figures/regional_tb_mortality_percentage_change.png)
+
+# 5. Country-Level Analysis
+
+This section examines differences in tuberculosis burden across individual countries.
+
+The analysis identifies countries with the highest estimated TB incidence and mortality rates and examines Egypt's position within the global country-level rankings.
+
+## 5.1 Countries with the Highest TB Incidence Rates
+
+The following figure identifies the ten countries with the highest estimated TB incidence rates according to the latest available estimates.
+
+![Top 10 countries with highest TB incidence rates](figures/top10_countries_tb_incidence.png)
+
+## 5.2 Countries with the Highest TB Mortality Rates
+
+This figure presents the ten countries with the highest estimated TB mortality rates.
+
+![Top 10 countries with highest TB mortality rates](figures/top10_countries_tb_mortality.png)
+
+## 5.3 Egypt's Global TB Mortality Ranking
+
+The following figure illustrates the distribution of estimated TB mortality rates across countries and highlights Egypt's position in the global ranking.
+
+![Egypt's global TB mortality ranking](figures/egypt_global_tb_mortality_ranking.png)
+
+## 5.4 Egypt's Global TB Incidence Ranking
+
+This figure illustrates the distribution of estimated TB incidence rates across countries and highlights Egypt's position in the global ranking.
+
+![Egypt's global TB incidence ranking](figures/egypt_global_tb_incidence_ranking.png)
+
+# 6. Eastern Mediterranean Region Analysis
+
+This section focuses on tuberculosis burden across countries belonging to the WHO Eastern Mediterranean Region (EMR).
+
+The analysis compares country-level TB incidence and mortality estimates and examines Egypt's relative position within the region.
+
+## 6.1 TB Mortality Rates Across EMR Countries
+
+The following figure compares estimated TB mortality rates across Eastern Mediterranean countries and highlights Egypt's regional ranking.
+
+![TB mortality ranking across EMR countries](figures/emr_tb_mortality_ranking.png)
+
+## 6.2 TB Incidence Rates Across EMR Countries
+
+This figure compares estimated TB incidence rates across Eastern Mediterranean countries and highlights Egypt's regional ranking.
+
+![TB incidence ranking across EMR countries](figures/emr_tb_incidence_ranking.png)
+
+# 7. Egypt-Focused Analysis
+
+This section examines historical trends in tuberculosis incidence and mortality in Egypt.
+
+The analysis provides an overview of changes in estimated TB incidence and mortality rates between 2000 and 2024.
+
+## 7.1 Trends in TB Incidence and Mortality in Egypt
+
+The following figure illustrates the historical development of TB incidence and mortality rates in Egypt.
+
+![TB incidence and mortality trends in Egypt](figures/egypt_tb_trends.png)
+
+# 8. Egypt Compared with the Rest of the Eastern Mediterranean Region
+
+The final analytical section compares tuberculosis trends in Egypt with population-weighted estimates for the Eastern Mediterranean Region excluding Egypt.
+
+This comparison provides additional context for understanding whether Egypt's historical TB trends differ from the broader regional pattern.
+
+## 8.1 Comparison of TB Incidence and Mortality Trends
+
+The following figure compares changes in TB incidence and mortality rates in Egypt with those observed across the rest of the Eastern Mediterranean Region.
+
+![Egypt compared with the rest of the EMR](figures/egypt_vs_emr_tb_comparison.png)
+
+# 9. Conclusion
+
+This analysis demonstrates a substantial decline in tuberculosis (TB) incidence and mortality in Egypt between 2000 and 2024. The estimated incidence rate decreased from approximately 21 to 10 cases per 100,000 population, while the mortality rate fell from approximately 1.5 to 0.4 deaths per 100,000 population. These reductions indicate considerable progress in reducing the national TB burden over the study period.
+
+In 2024, Egypt ranked 151st globally in TB incidence and 162nd in mortality. Within the Eastern Mediterranean Region (EMR), Egypt ranked 16th out of 22 countries for incidence and mortality, according to the minimum-rank method used in this analysis. This relatively favourable position is consistent with the comparison showing that Egypt's incidence and mortality rates remained substantially lower than the corresponding estimates for the rest of the EMR throughout the study period.
+
+Although TB incidence and mortality declined globally and across most WHO regions, the magnitude of progress varied considerably. The EMR continued to experience a higher TB burden than Egypt, highlighting differences in progress between countries. Despite Egypt's improvements, the persistence of TB cases and deaths, particularly in recent years, underlines the importance of maintaining effective control measures. Continued efforts in early detection, timely treatment, surveillance, and access to healthcare are essential to sustain the progress achieved and further reduce the burden of TB.
+
+Overall, the findings place Egypt among the relatively lower-burden countries globally and within the EMR, while demonstrating a clear long-term improvement in both TB incidence and mortality. As the analysis is based on WHO estimates, the results should be interpreted as trends in estimated disease burden rather than direct measures of the impact of specific interventions.
